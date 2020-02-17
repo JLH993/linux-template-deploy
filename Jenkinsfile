@@ -2,7 +2,7 @@
 
 pipeline {
     agent {
-        docker {image 'koalaman/shellcheck:v0.4.6' }
+        docker { image 'koalaman/shellcheck:v0.4.6' }
     }
     
     stages {
@@ -12,8 +12,10 @@ pipeline {
 	}
 	
 	stage('shellcheck') {
+        steps {
 			sh "shellcheck --version"
 			sh "shellcheck *.sh"
+            }
 	    }
     }
 }
