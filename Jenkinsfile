@@ -1,23 +1,16 @@
 #!/usr/bin/env groovy
 
-pipeline {
-    agent {
-        docker { image 'koalaman/shellcheck:v0.4.6' }
-    }
-    
-    stages {
-        
-	stage('checkout') {
+node {
+    stage('checkout') {
         steps {
             checkout scm
         }
-	}
-	
-	stage('shellcheck') {
+    }
+    
+    stage('shellcheck') {
         steps {
-			sh "shellcheck --version"
-			sh "shellcheck *.sh"
+            sh "shellcheck --version"
+            sh "shellcheck *.sh"
             }
-	    }
     }
 }
